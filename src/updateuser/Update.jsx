@@ -34,18 +34,18 @@ const UpdateUser = () => {
       });
   }, [id]);
 
-  const submitForm = async (e) => {
-    e.preventDefault();
-    await axios
-      .put(`https://crud-operations-nj3v.onrender.com/update/user/${id}`, user)
-      .then((response) => {
-        toast.success(response.data.message, { position: "top-right" });
-        navigate("/");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+ const submitForm = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await axios.put(`https://crud-operations-nj3v.onrender.com/update/user/${id}`, user);
+    toast.success(response.data.message, { position: "top-right" });
+    navigate("/");
+  } catch (error) {
+    toast.error("Failed to update user. Please try again.", { position: "top-right" });
+    console.error(error);
+  }
+};
+
 
   return (
     <Container className="addUser mt-4">
