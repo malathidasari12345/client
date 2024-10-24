@@ -24,7 +24,7 @@ const AddUser = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:8000/api/user", user)
+      .post("https://crud-operations-nj3v.onrender.com/api/user", user)
       .then((response) => {
         toast.success(response.data.message, { position: "top-right" });
         navigate("/");
