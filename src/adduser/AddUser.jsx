@@ -31,6 +31,7 @@ const AddUser = () => {
       })
       .catch((error) => {
         console.log(error);
+          toast.error("Failed to add user. Please try again.");
       });
   };
 
